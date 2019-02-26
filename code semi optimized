@@ -1,0 +1,70 @@
+10rem f64
+20zz=rnd(-ti)
+30sc=0
+40poke646,2:poke53280,2:poke53281,0
+50empt$="                   "
+60ln$="{cm +}"+empt$+"{cm +}"
+70rc=7:sp=rc:lc=0:rp=0:dimc
+80dimob:dimhi
+90dimpf$
+100print"{clear}"
+110v=53248
+120pokev+21,4:poke53289,4:poke2042,13
+130de=3
+140forn=0to62:readq:poke832+n,q:next
+150x=165:y=50
+160a=peek(56320)
+170ifa<>127thende=de+1:goto190
+180ifa=127thende=de-1.5
+190ifde<3thende=3
+200ifde>10thende=10
+210ona-116gosub620,630,640,650,660,670,680,650,690,700
+220ifx<20thenx=20:goto240
+230ifx>255thenx=255
+240ify<50theny=50:goto260
+250ify>237theny=237
+260pokev+4,x:pokev+5,y
+270c=int(rnd(1)*3)+1
+280iflc=0thenifc=1thensp=sp+1:rp=rp+1:goto300
+290iflc=0thenifc=2thensp=sp-1:rp=rp+1
+300iflc=1thensp=sp+1:rp=rp+1:goto330
+310iflc=2thensp=sp-1:rp=rp+1:goto330
+320iflc=3thenrp=rp+1
+330ifsp<rcthensp=rc:goto350
+340ifsp>2*rcthensp=2*rc
+350pf$=""
+360fort=1tosp:pf$=pf$+" ":nextt
+370ob=int(rnd(1)*3)+1
+380ifob<3orsc<6then?pf$+ln$:goto400
+390ifob=3thenifsc>5thengosub440
+400ifpeek(53279)=4thengosub480
+410ifrp>rcthenrp=0:lc=c
+420sc=sc+1
+430goto160
+440ob=int(rnd(1)*(len(ln$)-1))+1
+450l$=left$(ln$,ob):r$=right$(ln$,len(ln$)-ob-1)
+460?pf$+l$+"Q"+r$
+470return
+480hi=hi+1
+490poke53289,4+hi
+500ifhi<11thenreturn
+510print"{clear}"
+520pokev+21,0
+530restore
+540?"fine corsa"
+550?"linee superate:"+str$(sc):?"ancora?(y o n)"
+560gety$:ify$=""goto560
+570ify$="y"thengoto30
+580end
+590data0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+600data0,0,0,255,255,255,73,0,146,38,0,100,16,0,8,8,24,16
+610data4,36,32,2,36,64,1,36,128,0,153,0,0,66,0,0,36,0,0,24,0
+620y=y+de:x=x+de:return
+630y=y-de:x=x+de:return
+640x=x+de:return
+650return
+660y=y+de:x=x-de:return
+670y=y-de:x=x-de:return
+680x=x-de:return
+690y=y+de:return
+700y=y-de:return
